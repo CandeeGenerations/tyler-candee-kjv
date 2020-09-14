@@ -1,55 +1,52 @@
+require('dotenv').config()
+
 module.exports = {
   siteMetadata: {
-    title: `Novela by Narative`,
-    name: `Narative`,
-    siteUrl: `https://novela.narative.co`,
-    description: `This is my description that will be used in the meta tags and important for search results`,
+    title: `Tyler Candee - Helpful Posts`,
+    name: `Candee Generations`,
+    siteUrl: `http://kjv.candeegenerations.com`,
+    description: `Posts from Tyler Candee`,
     hero: {
-      heading: `Welcome to Novela, the simplest way to start publishing with Gatsby.`,
+      heading: `Read some helpful posts from Tyler Candee today!`,
       maxWidth: 652,
     },
     social: [
+      // {
+      //   name: `twitter`,
+      //   url: `https://twitter.com/narative`,
+      // },
       {
-        name: `twitter`,
-        url: `https://twitter.com/narative`,
-      },
-      {
-        name: `github`,
-        url: `https://github.com/narative`,
+        name: `facebook`,
+        url: `https://facebook.com/tyler.candee.kjv`,
       },
       {
         name: `instagram`,
-        url: `https://instagram.com/narative.co`,
-      },
-      {
-        name: `linkedin`,
-        url: `https://www.linkedin.com/company/narative/`,
-      },
-      {
-        name: `dribbble`,
-        url: `https://dribbble.com/narativestudio`,
+        url: `https://instagram.com/tyler.candee.kjv`,
       },
     ],
   },
   plugins: [
     {
-      resolve: "@narative/gatsby-theme-novela",
+      resolve: 'gatsby-source-contentful',
       options: {
-        contentPosts: "content/posts",
-        contentAuthors: "content/authors",
-        basePath: "/",
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+      },
+    },
+    {
+      resolve: '@narative/gatsby-theme-novela',
+      options: {
         authorsPage: true,
         sources: {
-          local: true,
-          // contentful: true,
+          contentful: true,
         },
       },
     },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Novela by Narative`,
-        short_name: `Novela`,
+        name: `Tyler Candee`,
+        short_name: `TylerCandee`,
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#fff`,
@@ -59,8 +56,7 @@ module.exports = {
     },
     {
       resolve: `gatsby-plugin-netlify-cms`,
-      options: {
-      },
+      options: {},
     },
   ],
-};
+}
