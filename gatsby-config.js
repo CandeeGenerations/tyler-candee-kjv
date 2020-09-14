@@ -3,7 +3,7 @@ require('dotenv').config()
 module.exports = {
   siteMetadata: {
     title: `Tyler Candee - Helpful Posts`,
-    name: `Candee Generations`,
+    name: `Tyler Candee`,
     siteUrl: `http://kjv.candeegenerations.com`,
     description: `Posts from Tyler Candee`,
     hero: {
