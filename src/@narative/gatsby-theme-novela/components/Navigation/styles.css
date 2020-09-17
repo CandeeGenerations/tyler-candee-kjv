@@ -1,0 +1,24 @@
+.verse {
+  cursor: pointer;
+  color: rgb(97, 102, 220);
+}
+
+.verse-overlay {
+  width: 90%;
+  z-index: 10;
+  padding: 20px;
+  max-width: 500px;
+  position: absolute;
+  background: #000;
+  border-radius: 5px;
+  align-items: center;
+  color: rgb(197, 197, 204);
+  animation: animation-1xhp7f5 200ms forwards;
+  transition: left 75ms ease-out, right 75ms ease-out, background 200ms;
+}
+
+.verse-overlay span {
+  font-size: 18px;
+  font-weight: 600;
+  color: #73737d;
+}
