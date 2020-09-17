@@ -68,12 +68,14 @@ const Footer = () => {
       content = response.content
         .trim()
         .replace(/\n\s\s\s\s/g, '')
+        .replace(/\u00B6\s/g, '')
         .replace(/\n/g, '<br />')
+        .replace(/\s\s/g, '<br />')
         .replace(/[\t/[]/g, '')
         .replace(/] /g, '. ')
     } else {
       response = await getVerse(book, chapter, verse)
-      content = response.content
+      content = response.content.trim().replace(/\u00B6\s/g, '')
     }
 
     if (response) {
