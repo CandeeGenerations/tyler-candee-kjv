@@ -11,10 +11,6 @@ module.exports = {
       maxWidth: 652,
     },
     social: [
-      // {
-      //   name: `twitter`,
-      //   url: `https://twitter.com/narative`,
-      // },
       {
         name: `facebook`,
         url: `https://facebook.com/tyler.candee.kjv`,

@@ -1,0 +1,10 @@
+type Comment {
+  name: String!
+  comment: String!
+  slug: String!
+  referenceComment: ID
+}
+
+type Query {
+  findComments(slug: String!): [Comment]!
+}
