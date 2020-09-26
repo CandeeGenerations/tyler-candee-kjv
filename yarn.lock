@@ -1694,9 +1694,9 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@narative/gatsby-theme-novela@https://github.com/CandeeGenerations/gatsby-theme-novela.git#45fea6e767a59b372d2b3209700aaa2d7e97f7c6":
+"@narative/gatsby-theme-novela@https://github.com/CandeeGenerations/gatsby-theme-novela.git#f7a127d448c342fe87f636849c710b39b779ed27":
   version "0.13.1"
-  resolved "https://github.com/CandeeGenerations/gatsby-theme-novela.git#45fea6e767a59b372d2b3209700aaa2d7e97f7c6"
+  resolved "https://github.com/CandeeGenerations/gatsby-theme-novela.git#f7a127d448c342fe87f636849c710b39b779ed27"
   dependencies:
     "@emotion/core" "^10.0.14"
     "@emotion/styled" "^10.0.14"
