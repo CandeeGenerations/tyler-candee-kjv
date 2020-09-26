@@ -1,64 +1,66 @@
-import React, {useEffect, useState} from 'react'
-import {css} from '@emotion/core'
+import React, {useState} from 'react'
 import styled from '@emotion/styled'
 
-import Section from '@narative/gatsby-theme-novela/src/components/Section'
-
-const NavigationMain = ({location}) => {
+const NavigationMain = ({footer = false}) => {
   const [showMenu, setShowMenu] = useState(false)
 
-  useEffect(() => {
-    setShowMenu(window.innerWidth > 735)
-  }, [])
+  const navigationItems = (
+    <NavigationList>
+      {footer && (
+        <NavigationItem>
+          <a href="/">Home</a>
+        </NavigationItem>
+      )}
 
-  const home = location && location.pathname === '/'
-  const salvation = location && location.salvation
+      <NavigationItem>
+        <a href="/salvation">Salvation</a>
+      </NavigationItem>
+    </NavigationList>
+  )
 
-  const activeItem = css`
-    font-weight: bold;
-    border-bottom: 2px solid #d8d8db;
+  const headerNavigation = (
+    <NavigationContainer>{navigationItems}</NavigationContainer>
+  )
 
-    @media screen and (max-width: 735px) {
-      border-bottom: 0;
-    }
-  `
+  const footerNavigation = (
+    <MobileNavigationContainer>
+      {showMenu && navigationItems}
 
-  return (
-    <Section
-      relative
-      css={css`
-        margin-top: 50px;
-        padding: 20px 4rem;
-        border-top: 1px solid #d8d8db;
-        border-bottom: 1px solid #d8d8db;
-
-        @media screen and (max-width: 735px) {
-          padding: 20px 0;
-        }
-      `}
-    >
       <NavigationMobileLink onClick={() => setShowMenu(!showMenu)}>
         {showMenu ? 'Hide' : 'Show'} Menu
       </NavigationMobileLink>
-
-      {showMenu && (
-        <NavigationList>
-          <NavigationItem>
-            <a href="/" css={home && activeItem}>
-              Home
-            </a>
-          </NavigationItem>
-
-          <NavigationItem>
-            <a href="/salvation" css={salvation && activeItem}>
-              Salvation
-            </a>
-          </NavigationItem>
-        </NavigationList>
-      )}
-    </Section>
+    </MobileNavigationContainer>
   )
+
+  return footer ? footerNavigation : headerNavigation
 }
+
+const NavigationContainer = styled.div`
+  width: 100%;
+  margin-left: 30px;
+  border-left: 1px solid #d8d8db;
+
+  @media screen and (max-width: 735px) {
+    display: none;
+  }
+`
+
+const MobileNavigationContainer = styled.div`
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  position: fixed;
+  background-color: #fafafa;
+  border-top-left-radius: 40px;
+  border-top: 1px solid #d8d8db;
+  border-top-right-radius: 40px;
+  box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.2);
+
+  @media screen and (min-width: 736px) {
+    display: none;
+  }
+`
 
 const NavigationList = styled.ul`
   margin: 0;
@@ -70,37 +72,38 @@ const NavigationItem = styled.li`
   display: inline-block;
 
   > a {
+    color: #000;
     margin: 0 5px;
-    color: #6166dc;
     padding: 10px 15px 5px;
+
+    &:hover {
+      color: #6166dc;
+    }
   }
 
   @media screen and (max-width: 735px) {
     width: 100%;
     display: block;
-
-    &:not(:last-child) {
-      border-bottom: 1px solid #d8d8db;
-
-      > a {
-        padding: 20px 0;
-      }
-    }
+    border-bottom: 1px solid #d8d8db;
 
     > a {
       display: block;
-      padding-top: 20px;
+      padding: 20px 0;
       text-align: center;
     }
   }
 `
 
 const NavigationMobileLink = styled.div`
+  color: #000;
   display: none;
-  color: #6166dc;
   padding: 20px 0;
   cursor: pointer;
   text-align: center;
+
+  &:hover {
+    color: #6166dc;
+  }
 
   @media screen and (max-width: 735px) {
     display: block;

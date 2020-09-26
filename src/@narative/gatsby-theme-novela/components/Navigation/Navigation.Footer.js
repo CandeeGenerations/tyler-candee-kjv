@@ -9,6 +9,7 @@ import mediaqueries from '@styles/media'
 
 import {getPassage, getVerse} from '../../../../api'
 import './styles.css'
+import NavigationMain from './Navigation.Main'
 
 const siteQuery = graphql`
   {
@@ -144,7 +145,7 @@ const Footer = () => {
           </div>
         </FooterContainer>
       </Section>
-
+      <NavigationMain footer />
       {showVerse && <div id="verse" className="verse-overlay"></div>}
     </>
   )
