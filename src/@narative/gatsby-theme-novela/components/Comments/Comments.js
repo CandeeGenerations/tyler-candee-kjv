@@ -5,7 +5,7 @@ import {GraphQLClient} from 'graphql-request'
 import Comment from './components/Comment'
 import {FIND_COMMENTS, CREATE_COMMENT} from './gql'
 
-const CommentsSection = () => {
+const Comments = () => {
   const [gqlClient] = useState(
     new GraphQLClient(process.env.GATSBY_GRAPHQL_URL, {
       headers: {Authorization: `Bearer ${process.env.GATSBY_GRAPHQL_AUTH_KEY}`},
@@ -53,7 +53,7 @@ const CommentsSection = () => {
   }
 
   return (
-    <Comments>
+    <CommentsSection>
       <CommentsBorder />
       <CommentsHeader>Comments</CommentsHeader>
 
@@ -80,11 +80,11 @@ const CommentsSection = () => {
           <Comment saveComment={saveComment} newComment />
         </CommentsContainer>
       )}
-    </Comments>
+    </CommentsSection>
   )
 }
 
-const Comments = styled.div`
+const CommentsSection = styled.div`
   padding: 50px 0 50px;
   margin: 0 auto;
   max-width: 1140px;
@@ -124,4 +124,4 @@ const CommentsContainer = styled.div`
   }
 `
 
-export default CommentsSection
+export default Comments
