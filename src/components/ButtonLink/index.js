@@ -1,8 +1,12 @@
 import React from 'react'
 import styled from '@emotion/styled'
 
-const ButtonLink = ({href, text}) => {
-  return <StyledLink href={href}>{text}</StyledLink>
+const ButtonLink = ({href, text, ...rest}) => {
+  return (
+    <StyledLink href={href} {...rest}>
+      {text}
+    </StyledLink>
+  )
 }
 
 export default ButtonLink
