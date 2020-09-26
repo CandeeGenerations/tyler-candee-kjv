@@ -1,11 +1,15 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {css} from '@emotion/core'
 import styled from '@emotion/styled'
 
 import Section from '@narative/gatsby-theme-novela/src/components/Section'
 
 const NavigationMain = ({location}) => {
-  const [showMenu, setShowMenu] = useState(!window || window.innerWidth > 735)
+  const [showMenu, setShowMenu] = useState(false)
+
+  useEffect(() => {
+    setShowMenu(window.innerWidth > 735)
+  }, [])
 
   const home = location && location.pathname === '/'
   const salvation = location && location.salvation
