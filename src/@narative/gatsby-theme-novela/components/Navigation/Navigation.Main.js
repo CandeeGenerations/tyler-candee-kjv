@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {Link} from 'gatsby'
 import styled from '@emotion/styled'
 
 const NavigationMain = ({footer = false}) => {
@@ -8,12 +9,12 @@ const NavigationMain = ({footer = false}) => {
     <NavigationList>
       {footer && (
         <NavigationItem>
-          <a href="/">Home</a>
+          <Link to="/">Home</Link>
         </NavigationItem>
       )}
 
       <NavigationItem>
-        <a href="/salvation">Salvation</a>
+        <Link to="/salvation">Salvation</Link>
       </NavigationItem>
     </NavigationList>
   )
