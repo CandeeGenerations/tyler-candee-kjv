@@ -50,7 +50,7 @@ const MobileNavigationContainer = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1;
+  z-index: 10;
   position: fixed;
   background-color: #fafafa;
   border-top-left-radius: 40px;
