@@ -5,7 +5,7 @@ import styled from '@emotion/styled'
 import Section from '@narative/gatsby-theme-novela/src/components/Section'
 
 const NavigationMain = ({location}) => {
-  const [showMenu, setShowMenu] = useState(window.innerWidth > 735)
+  const [showMenu, setShowMenu] = useState(!window || window.innerWidth > 735)
 
   const home = location && location.pathname === '/'
   const salvation = location && location.salvation
