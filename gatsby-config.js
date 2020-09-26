@@ -34,6 +34,7 @@ module.exports = {
       options: {
         authorsPage: true,
         enableComments: true,
+        enableNavigation: true,
         sources: {
           local: false,
           contentful: true,

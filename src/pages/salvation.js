@@ -9,6 +9,7 @@ import SEO from '@narative/gatsby-theme-novela/src/components/SEO'
 import Headings from '@narative/gatsby-theme-novela/src/components/Headings'
 
 import ButtonLink from '../components/ButtonLink'
+import NavigationMain from '../@narative/gatsby-theme-novela/components/Navigation/Navigation.Main'
 
 function Salvation() {
   return (
@@ -23,6 +24,7 @@ function Salvation() {
         `}
       />
       <SEO />
+      <NavigationMain location={{salvation: true}} />
       <Section>
         <SalvationContainer>
           <Headings.h1>Salvation</Headings.h1>

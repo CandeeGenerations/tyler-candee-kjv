@@ -10,7 +10,7 @@
     "proxy": "netlify-cms-proxy-server"
   },
   "dependencies": {
-    "@narative/gatsby-theme-novela": "https://github.com/CandeeGenerations/gatsby-theme-novela.git",
+    "@narative/gatsby-theme-novela": "https://github.com/CandeeGenerations/gatsby-theme-novela.git#45fea6e767a59b372d2b3209700aaa2d7e97f7c6",
     "axios": "^0.20.0",
     "dayjs": "^1.8.36",
     "dotenv": "^8.2.0",
