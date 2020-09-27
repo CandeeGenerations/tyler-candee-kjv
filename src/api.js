@@ -31,7 +31,7 @@ export const sendNewCommentSlackMessage = ({_id, slug, comment}) =>
             {
               type: 'button',
               text: 'View Comment',
-              url: `https://dashboard.fauna.com/collections/documents-edit/Comment/${_id}/@db/${process.env.GATSBY_FAUNADB}`,
+              url: `https://dashboard.fauna.com/collections/documents/Comment/${_id}/@db/${process.env.GATSBY_FAUNADB}`,
             },
             {
               type: 'button',

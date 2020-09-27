@@ -74,7 +74,7 @@ function ApproveComment() {
                 {loading ? 'Approving Comment...' : 'Comment Approved!'}
               </Headings.h1>
               <InfoText css={{marginBottom: 50}}>
-                Comment Id: <Code.Pre>123</Code.Pre>
+                Comment Id: <Code.Pre>{commentId}</Code.Pre>
               </InfoText>
               {!loading && <ButtonLink to={`/${slug}`} text="View Post" />}
             </div>
