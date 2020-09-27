@@ -3,8 +3,10 @@ type Comment {
   comment: String!
   slug: String!
   referenceComment: ID
+  approved: Boolean!
 }
 
 type Query {
   findComments(slug: String!): [Comment]!
+  findApprovedComments(slug: String!, approved: Boolean!): [Comment]!
 }

@@ -1,26 +1,25 @@
 import React, {useEffect, useState} from 'react'
 import styled from '@emotion/styled'
-import {GraphQLClient} from 'graphql-request'
 
 import Comment from './components/Comment'
-import {FIND_COMMENTS, CREATE_COMMENT} from './gql'
+import {getGQLClient, sendNewCommentSlackMessage} from '../../../../api'
+import {FIND_APPROVED_COMMENTS, CREATE_COMMENT} from './gql'
 
 const Comments = () => {
-  const [gqlClient] = useState(
-    new GraphQLClient(process.env.GATSBY_GRAPHQL_URL, {
-      headers: {Authorization: `Bearer ${process.env.GATSBY_GRAPHQL_AUTH_KEY}`},
-    }),
-  )
+  const [gqlClient] = useState(getGQLClient())
   const [slug, setSlug] = useState('')
   const [comments, setComments] = useState({})
   const [commentKeys, setCommentKeys] = useState([])
   const [loading, setLoading] = useState(true)
+  const [success, setSuccess] = useState(false)
 
   const findComments = async (s) => {
     setLoading(true)
 
-    const response = await gqlClient.request(FIND_COMMENTS, {slug: slug || s})
-    const c = response.findComments.data
+    const response = await gqlClient.request(FIND_APPROVED_COMMENTS, {
+      slug: slug || s,
+    })
+    const c = response.findApprovedComments.data
     const commentsData = {}
 
     c.forEach((comment) => {
@@ -37,18 +36,23 @@ const Comments = () => {
   }
 
   useEffect(() => {
-    const locArr = window.location.href.split('/')
-    const s = locArr[locArr.length - 1].split('?')[0]
+    const locArr = window.location.href
+      .split('?')[0]
+      .split('/')
+      .filter((x) => x.length > 0)
+    const s = locArr[locArr.length - 1]
 
     setSlug(s)
     findComments(s)
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   const saveComment = async (data) => {
-    await gqlClient.request(CREATE_COMMENT, {
+    const response = await gqlClient.request(CREATE_COMMENT, {
       ...data,
       slug,
     })
+    setSuccess(true)
+    sendNewCommentSlackMessage(response.createComment)
     findComments(slug)
   }
 
@@ -75,6 +79,13 @@ const Comments = () => {
             })
           ) : (
             <Comment saveComment={saveComment} noComment />
+          )}
+
+          {success && (
+            <Comment
+              successText="Thank you for your comment. We have received it and will approve it shortly."
+              noComment
+            />
           )}
 
           <Comment saveComment={saveComment} newComment />

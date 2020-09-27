@@ -24,7 +24,7 @@ function NotFoundPage() {
           <p>Looks like you must keep seeking :)</p>
 
           <div css={{padding: '40px 0'}}>
-            <ButtonLink href="/" text="Go Home" />
+            <ButtonLink to="/" text="Go Home" />
           </div>
 
           <small css={{fontSize: 11}}>

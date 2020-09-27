@@ -7,7 +7,14 @@ import NewReply from './NewReply'
 
 dayjs.extend(relativeTime)
 
-const Comment = ({comment, isChild, saveComment, noComment, newComment}) => {
+const Comment = ({
+  comment,
+  isChild,
+  saveComment,
+  noComment,
+  newComment,
+  successText,
+}) => {
   const [commentTime] = useState(
     !noComment && !newComment && dayjs(comment._ts / 1000),
   )
@@ -20,7 +27,11 @@ const Comment = ({comment, isChild, saveComment, noComment, newComment}) => {
     >
       {noComment ? (
         <CommentSubContainer>
-          <em>No comments yet. Be the first one!</em>
+          {successText ? (
+            <SuccessText>{successText}</SuccessText>
+          ) : (
+            <em>No comments yet. Be the first one!</em>
+          )}
         </CommentSubContainer>
       ) : newComment ? (
         <div>
@@ -101,6 +112,10 @@ const CommentTime = styled.div`
 const CommentText = styled.div`
   margin-top: 20px;
   word-break: break-word;
+`
+
+const SuccessText = styled.span`
+  color: green;
 `
 
 export default Comment
