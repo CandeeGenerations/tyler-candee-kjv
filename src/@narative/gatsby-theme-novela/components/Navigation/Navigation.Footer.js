@@ -46,11 +46,10 @@ const Footer = () => {
   const {name, social} = results.allSite.edges[0].node.siteMetadata
 
   const copyrightDate = (() => {
-    const {edges} = results.allMdx
-    const years = [0, edges.length - 1].map((edge) =>
-      new Date(edges[edge].node.frontmatter.date).getFullYear(),
-    )
-    return years[0] === years[1] ? `${years[0]}` : `${years[0]}–${years[1]}`
+    const startYear = 2020
+    const year = new Date().getFullYear()
+
+    return `${startYear === year ? '' : `${startYear} - `}${year}`
   })()
 
   /** custom code below */

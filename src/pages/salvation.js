@@ -32,10 +32,10 @@ function Salvation() {
             you would go to heaven?
           </Headings.h3>
 
-          <p css={{marginTop: 50}}>
+          <Text css={{marginTop: 50}}>
             The Bible says you can <strong>know</strong> that you have eternal
             life.
-          </p>
+          </Text>
 
           <Blockquote>
             <p>
@@ -46,26 +46,28 @@ function Salvation() {
             <footer>- 1 John 5:13</footer>
           </Blockquote>
 
-          <p>First, admit that you (as all of us) have sinned.</p>
+          <Text>First, admit that you (as all of us) have sinned.</Text>
 
           <Blockquote>
             <p>For all have sinned, and come short of the glory of God.</p>
             <footer>-Romans 3:23</footer>
           </Blockquote>
 
-          <p>Second, recognize that the price of our sin is death and hell.</p>
+          <Text>
+            Second, recognize that the price of our sin is death and hell.
+          </Text>
 
           <Blockquote>
             <p>For the wages of sin is death.</p>
             <footer>-Romans 6:23a</footer>
           </Blockquote>
 
-          <p>
+          <Text>
             Third, understand that eternal life is a free gift from God. This
             gift cannot be earned and it is available to you if you will receive
             the Lord Jesus Christ as your personal Savior. Salvation is not in
             the church, religion, or good works, but in Jesus Christ alone!
-          </p>
+          </Text>
 
           <Blockquote>
             <p>
@@ -74,10 +76,10 @@ function Salvation() {
             <footer>- Romans 6:23b</footer>
           </Blockquote>
 
-          <p>
+          <Text>
             Finally, call on the Lord in prayer and by faith ask Him to save
             you!
-          </p>
+          </Text>
 
           <Blockquote>
             <p>
@@ -92,10 +94,10 @@ function Salvation() {
             <footer>- Romans 10:9 - 10, 13</footer>
           </Blockquote>
 
-          <p>
+          <Text>
             Right now, bow your head and repeat this prayer to God, sincerely
             meaning it in your heart.
-          </p>
+          </Text>
 
           <Blockquote>
             Dear God, I admit that I'm a sinner and I deserve to pay for my
@@ -104,7 +106,7 @@ function Salvation() {
             take me to Heaven when I die. In Jesus' name, Amen.
           </Blockquote>
 
-          <p css={{marginBottom: 50}}>Did you pray that prayer?</p>
+          <Text css={{marginBottom: 50}}>Did you pray that prayer?</Text>
 
           <ButtonLink
             href="https://bit.ly/35KxN7M"
@@ -122,10 +124,19 @@ const SalvationContainer = styled.div`
   margin-top: 100px;
   max-width: 75%;
   width: 100%;
+  margin-bottom: 500px;
 
   @media screen and (max-width: 735px) {
     max-width: 100%;
   }
+`
+
+const color = (p) => css`
+  color: ${p.theme.colors.primary};
+`
+
+const Text = styled.p`
+  ${color}
 `
 
 export default Salvation

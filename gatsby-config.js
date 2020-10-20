@@ -59,5 +59,11 @@ module.exports = {
         trackingId: process.env.GA_TRACKING_ID,
       },
     },
+    {
+      resolve: `gatsby-plugin-metomic`,
+      options: {
+        clientId: process.env.METOMIC_CLIENT_ID,
+      },
+    },
   ],
 }

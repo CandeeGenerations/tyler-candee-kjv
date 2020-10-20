@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import qs from 'querystring'
+import {css} from '@emotion/core'
 import styled from '@emotion/styled'
 
 import Layout from '@narative/gatsby-theme-novela/src/components/Layout'
@@ -85,8 +86,13 @@ function ApproveComment() {
   )
 }
 
+const color = (p) => css`
+  color: ${p.theme.colors.primary};
+`
+
 const InfoText = styled.div`
   margin-top: 20px;
+  ${color}
 `
 
 export default ApproveComment

@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
 import {Link} from 'gatsby'
+import {css} from '@emotion/core'
 import styled from '@emotion/styled'
 
 const NavigationMain = ({footer = false}) => {
   const [showMenu, setShowMenu] = useState(false)
+  const resourcesEnabled = process.env.GATSBY_ENABLE_RESOURCES
 
   const navigationItems = (
     <NavigationList>
@@ -16,6 +18,12 @@ const NavigationMain = ({footer = false}) => {
       <NavigationItem>
         <Link to="/salvation">Salvation</Link>
       </NavigationItem>
+
+      {resourcesEnabled && (
+        <NavigationItem>
+          <Link to="/resources">Resources</Link>
+        </NavigationItem>
+      )}
     </NavigationList>
   )
 
@@ -50,8 +58,8 @@ const MobileNavigationContainer = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 10;
   position: fixed;
+  z-index: 200000001;
   background-color: #fafafa;
   border-top-left-radius: 40px;
   border-top: 1px solid #d8d8db;
@@ -69,13 +77,17 @@ const NavigationList = styled.ul`
   list-style-type: none;
 `
 
+const color = (p) => css`
+  color: ${p.theme.colors.primary};
+`
+
 const NavigationItem = styled.li`
   display: inline-block;
 
   > a {
-    color: #000;
     margin: 0 5px;
     padding: 10px 15px 5px;
+    ${color}
 
     &:hover {
       color: #6166dc;
@@ -98,9 +110,9 @@ const NavigationItem = styled.li`
 const NavigationMobileLink = styled.div`
   color: #000;
   display: none;
-  padding: 20px 0;
   cursor: pointer;
   text-align: center;
+  padding: 20px 0 30px 0;
 
   &:hover {
     color: #6166dc;
