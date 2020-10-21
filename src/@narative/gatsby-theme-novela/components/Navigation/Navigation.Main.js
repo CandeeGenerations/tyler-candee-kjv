@@ -5,7 +5,7 @@ import styled from '@emotion/styled'
 
 const NavigationMain = ({footer = false}) => {
   const [showMenu, setShowMenu] = useState(false)
-  const resourcesEnabled = process.env.GATSBY_ENABLE_RESOURCES
+  const resourcesEnabled = process.env.GATSBY_ENABLE_RESOURCES === 'true'
 
   const navigationItems = (
     <NavigationList>
