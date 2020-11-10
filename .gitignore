@@ -54,6 +54,9 @@ typings/
 
 # dotenv environment variables file
 .env
+.tyler-candee-kjv.env
+.john-lacombe-site.env
+.cj-site.env
 
 # gatsby files
 .cache/
