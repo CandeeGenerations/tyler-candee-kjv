@@ -130,7 +130,7 @@ const Footer = () => {
     })
   }, [])
 
-  const enableKofi = process.env.GATSBY_ENABLE_KOFI === 'true'
+  const kofiId = process.env.GATSBY_KOFI_ID
 
   return (
     <>
@@ -140,11 +140,11 @@ const Footer = () => {
         <FooterContainer>
           <FooterText>
             © {copyrightDate} {name}{' '}
-            {enableKofi && (
+            {kofiId && (
               <>
                 (
                 <a
-                  href="https://ko-fi.com/tylercandeekjv"
+                  href={`https://ko-fi.com/${kofiId}`}
                   rel="noopener noreferrer"
                   target="_blank"
                 >
