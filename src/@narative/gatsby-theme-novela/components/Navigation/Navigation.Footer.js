@@ -130,6 +130,8 @@ const Footer = () => {
     })
   }, [])
 
+  const enableKofi = process.env.GATSBY_ENABLE_KOFI === 'true'
+
   return (
     <>
       <FooterGradient />
@@ -137,7 +139,20 @@ const Footer = () => {
         <HoritzontalRule />
         <FooterContainer>
           <FooterText>
-            © {copyrightDate} {name}
+            © {copyrightDate} {name}{' '}
+            {enableKofi && (
+              <>
+                (
+                <a
+                  href="https://ko-fi.com/tylercandeekjv"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Buy me a Coffee
+                </a>
+                )
+              </>
+            )}
           </FooterText>
           <div>
             <SocialLinks links={social} />
