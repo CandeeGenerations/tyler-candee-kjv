@@ -6,9 +6,15 @@ export const getGQLClient = () =>
     headers: {Authorization: `Bearer ${process.env.GATSBY_GRAPHQL_AUTH_KEY}`},
   })
 
-export const sendNewCommentSlackMessage = ({_id, slug, comment}) =>
+export const sendNewCommentSlackMessage = ({_id, slug, comment}) => {
+  const slackUrl = process.env.GATSBY_SLACK_WEBHOOK_URL
+
+  if (!slackUrl) {
+    return
+  }
+
   axios.post(
-    process.env.GATSBY_SLACK_WEBHOOK_URL,
+    slackUrl,
     {
       username: 'Tyler Candee KJV',
       text: 'There is a new comment on your website:',
@@ -49,6 +55,7 @@ export const sendNewCommentSlackMessage = ({_id, slug, comment}) =>
       },
     },
   )
+}
 
 export const getVerse = async (book, chapter, verse) => {
   const response = await axios.get(
@@ -74,4 +81,17 @@ export const getPassage = async (book, chapter, verse, endVerse) => {
   )
 
   return response.data.data
+}
+
+export const sendEmail = (data) => {
+  const emailUrl = process.env.GATSBY_EMAIL_SERVER
+
+  if (!emailUrl) {
+    return
+  }
+
+  axios.post(`${emailUrl}/new-comment`, {
+    to: process.env.GATSBY_TO_EMAIL,
+    data: {...data, baseUrl: process.env.GATSBY_BASE_URL},
+  })
 }

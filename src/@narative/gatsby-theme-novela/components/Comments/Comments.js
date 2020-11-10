@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import styled from '@emotion/styled'
 
 import Comment from './components/Comment'
-import {getGQLClient, sendNewCommentSlackMessage} from '../../../../api'
+import {getGQLClient, sendNewCommentSlackMessage, sendEmail} from '../../../../api'
 import {FIND_APPROVED_COMMENTS, CREATE_COMMENT} from './gql'
 
 const Comments = () => {
@@ -53,6 +53,7 @@ const Comments = () => {
     })
     setSuccess(true)
     sendNewCommentSlackMessage(response.createComment)
+    sendEmail(response.createComment)
     findComments(slug)
   }
 

@@ -6,6 +6,8 @@ import styled from '@emotion/styled'
 const NavigationMain = ({footer = false}) => {
   const [showMenu, setShowMenu] = useState(false)
   const resourcesEnabled = process.env.GATSBY_ENABLE_RESOURCES === 'true'
+  const salvationEnabled = process.env.GATSBY_ENABLE_SALVATION === 'true'
+  const anyNav = resourcesEnabled || salvationEnabled
 
   const navigationItems = (
     <NavigationList>
@@ -15,9 +17,11 @@ const NavigationMain = ({footer = false}) => {
         </NavigationItem>
       )}
 
-      <NavigationItem>
-        <Link to="/salvation">Salvation</Link>
-      </NavigationItem>
+      {salvationEnabled && (
+        <NavigationItem>
+          <Link to="/salvation">Salvation</Link>
+        </NavigationItem>
+      )}
 
       {resourcesEnabled && (
         <NavigationItem>
@@ -28,7 +32,9 @@ const NavigationMain = ({footer = false}) => {
   )
 
   const headerNavigation = (
-    <NavigationContainer>{navigationItems}</NavigationContainer>
+    <NavigationContainer className={anyNav ? '' : 'no-nav'}>
+      {navigationItems}
+    </NavigationContainer>
   )
 
   const footerNavigation = (
@@ -48,6 +54,10 @@ const NavigationContainer = styled.div`
   width: 100%;
   margin-left: 30px;
   border-left: 1px solid #d8d8db;
+
+  &.no-nav {
+    border-left: 0;
+  }
 
   @media screen and (max-width: 735px) {
     display: none;
