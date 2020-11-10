@@ -2,22 +2,22 @@ require('dotenv').config()
 
 module.exports = {
   siteMetadata: {
-    title: `Tyler Candee - Helpful Posts`,
-    name: `Tyler Candee`,
-    siteUrl: `http://kjv.candeegenerations.com`,
-    description: `Posts from Tyler Candee`,
+    title: `Carissa Candee`,
+    name: `Carissa Candee`,
+    siteUrl: `https://cj.cgen.cc`,
+    description: `Posts from Carissa Candee`,
     hero: {
-      heading: `Read some helpful posts from Tyler Candee today!`,
+      heading: `Read some helpful posts from Carissa Candee today!`,
       maxWidth: 652,
     },
     social: [
       {
         name: `facebook`,
-        url: `https://facebook.com/tyler.candee.kjv`,
+        url: `https://facebook.com/mommasize`,
       },
       {
         name: `instagram`,
-        url: `https://instagram.com/tyler.candee.kjv`,
+        url: `https://instagram.com/cjblitzz`,
       },
     ],
   },
@@ -34,7 +34,6 @@ module.exports = {
       options: {
         authorsPage: true,
         enableComments: true,
-        enableNavigation: true,
         sources: {
           local: false,
           contentful: true,
@@ -44,8 +43,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Tyler Candee`,
-        short_name: `TylerCandee`,
+        name: `Carissa Candee`,
+        short_name: `CarissaCandee`,
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#fff`,
