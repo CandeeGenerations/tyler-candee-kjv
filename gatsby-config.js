@@ -2,22 +2,30 @@ require('dotenv').config()
 
 module.exports = {
   siteMetadata: {
-    title: `Tyler Candee - Helpful Posts`,
-    name: `Tyler Candee`,
-    siteUrl: `http://kjv.candeegenerations.com`,
-    description: `Posts from Tyler Candee`,
+    title: `John Lacombe - Blog`,
+    name: `John Lacombe`,
+    siteUrl: `https://pastor.odentonbaptist.org`,
+    description: `Posts from John Lacombe`,
     hero: {
-      heading: `Read some helpful posts from Tyler Candee today!`,
+      heading: `Read some helpful posts from John Lacombe today!`,
       maxWidth: 652,
     },
     social: [
       {
         name: `facebook`,
-        url: `https://facebook.com/tyler.candee.kjv`,
+        url: `https://www.facebook.com/OdentonBaptist/`,
       },
       {
         name: `instagram`,
-        url: `https://instagram.com/tyler.candee.kjv`,
+        url: `https://www.instagram.com/OdentonBaptist/`,
+      },
+      {
+        name: `twitter`,
+        url: `https://twitter.com/OdentonBaptist/`,
+      },
+      {
+        name: `youtube`,
+        url: `https://www.youtube.com/channel/UCH1UslOlF165I7_ZhAV-F0g`,
       },
     ],
   },
@@ -33,8 +41,7 @@ module.exports = {
       resolve: '@narative/gatsby-theme-novela',
       options: {
         authorsPage: true,
-        enableComments: true,
-        enableNavigation: true,
+        enableComments: process.env.ENABLE_COMMENTS === 'true',
         sources: {
           local: false,
           contentful: true,
@@ -44,8 +51,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Tyler Candee`,
-        short_name: `TylerCandee`,
+        name: `John Lacombe`,
+        short_name: `JohnLacombe`,
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#fff`,
